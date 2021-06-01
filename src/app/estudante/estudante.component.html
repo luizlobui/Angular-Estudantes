@@ -1,18 +1,18 @@
-<div *ngIf="selectedAluno">
 
-    <h2>Detalhes de {{selectedEstudante.nome | uppercase}}</h2>
+<h2>Estudantes</h2>
+<ul class="estudantes">
+    <li *ngFor="let estudante of Estudantes">
+        <a routerLink="/detail/{{estudante.id}}">
+          <span class="badge">{{estudante.id}}</span> {{estudante.name}}
+        </a>
+        <button class="delete" title="delete " (click)="delete(hero)">x</button>
+      </li>
+    </ul> 
     <div>
-        <label for="nome-aluno">Nome do Aluno: </label>
-        <input id="nome-aluno" [(ngModel)]="selectedAluno.nome" placeholder="nome">
-    </div>
-    <div><span>Id: </span>{{selectedEstudante.id}}</div>
-    <div><span>Idade: </span>{{selectedEstudante.idade}}</div>
-    <div><span>Altura: </span>{{selectedEstudante.altura}}</div>
-    <div><span>Peso: </span>{{selectedEstudante.peso}}</div>
-
-    <h2>Alunos</h2>
-<ul class="aluno">
-    <li *ngFor="let aluno of alunos" [class.selected]="aluno === selectedAluno" (click)="onSelect(aluno)">
-        <span class="badge">{{estudante.id}}</span> {{estudante.nome}}
-    </li>
-</ul> 
+      <label for="estudante-hero">Estudante name: </label>
+      <input id="estudante-hero" #estudanteName />
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button class="add-button" (click)="add(estudanteName.value); estudanteName.value=''">
+        Add estudante
+      </button>
+    </div> 
